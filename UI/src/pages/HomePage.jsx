@@ -1,34 +1,42 @@
-import { Navigate } from "react-router-dom";
-import { useAuth } from 'hooks/use-auth';
-import {useDispatch} from 'react-redux';
-import {removeUser} from 'store/slices/userSlice';
-import { Link } from "react-router-dom";
-import ApplicForm from "./ApplicForm";
-import { Container } from "@mui/system";
+
+
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+
+
 
 
 const HomePage = () => {
-    const dispatch = useDispatch();
-    const {isAuth, email} = useAuth();
 
-    return isAuth ? ( 
-        <div>
-            <h1>Welcome</h1>
+    return ( 
+        <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static" color="">
+        <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="red"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          Auction
+          </Typography>
+          
+          <Button href="/admin" color="inherit">Admin</Button>
+        </Toolbar>
+      </AppBar>
+    </Box>
 
-            <button
-                  onClick={()=> dispatch(removeUser())}>
-               Log out from {email}
-            </button>
 
-            <Link to="/application">app</Link>
-        </div> 
-    ) : (
-        
-        <Navigate to="/login" />
-
-        
-        
-        );
+    );
 
 
 
