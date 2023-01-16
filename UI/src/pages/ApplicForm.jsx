@@ -1,5 +1,7 @@
 import {useForm} from 'react-hook-form';
 import "../style.css"
+import Container from '@material-ui/core/Container';
+import Button from '@mui/material/Button';
 
 
 export default function ApplicForm () {
@@ -17,9 +19,12 @@ export default function ApplicForm () {
     const onSubmit = (data) => {
         alert(JSON.stringify(data));
         reset()
-    }
+    }   
 
     return (
+        <Container>
+        <Button href="/" color="inherit">Home</Button>
+
         <div className='ApplicForm'>
             <h1>Создать новую заявку на закуп</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -34,7 +39,7 @@ export default function ApplicForm () {
 
                  <label>
                     Количество:
-                    <input
+                    <input 
                          {...register('amount', {required: "Поле обязательно к заполнению"})} />
                 </label>
                  <div style={{height: 40}}>
@@ -42,7 +47,7 @@ export default function ApplicForm () {
                  </div>
 
                  <label>
-                    Срок поставки:
+                    Срок поставки (Дней):
                     <input
                          {...register('deliveryTime', {required: "Поле обязательно к заполнению"})} />
                 </label>
@@ -51,7 +56,7 @@ export default function ApplicForm () {
                  </div>
 
                  <label>
-                    Срок сбора предложения:
+                    Срок сбора предложения (Дней):
                     <input
                          {...register('period', {required: "Поле обязательно к заполнению"})} />
                 </label>
@@ -61,5 +66,6 @@ export default function ApplicForm () {
                 <input type="submit" />
             </form>
         </div>
+        </Container>
     );
 }
